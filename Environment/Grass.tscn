@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Environment/wind_shader_v1.1.tres" type="Shader" id=1]
+[ext_resource path="res://textures/grass.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 0.564706, 0.788235, 0.560784, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = null
+shader_param/roughness = 1.0
+shader_param/alpha_scissor_threshold = 0.05
+shader_param/point_size = 0.0
+shader_param/metallic_texture_channel = Plane( 0, 0, 0, 0 )
+shader_param/roughness_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/transmission = Color( 0.196078, 0.552941, 0.309804, 1 )
+shader_param/speed = 1.5
+shader_param/minStrength = 0.2
+shader_param/maxStrength = 0.5
+shader_param/interval = 2.0
+shader_param/detail = 0.3
+shader_param/distortion = 0.2
+shader_param/direction = Vector2( 1, 1 )
+shader_param/heightOffset = 0.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0.01, 0 )
+shader_param/uv2_scale = null
+shader_param/uv2_offset = null
+shader_param/texture_albedo = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=2]
+
+[node name="grass" type="Spatial"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+
+[node name="LOD0" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.483459, 0 )
+
+[node name="Grass1" type="MeshInstance" parent="LOD0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Grass2" type="MeshInstance" parent="LOD0"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Grass3" type="MeshInstance" parent="LOD0"]
+transform = Transform( -0.766045, 0, 0.642787, 0, 1, 0, -0.642787, 0, -0.766045, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="LOD1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.381832, 0.483459, 0 )
+
+[node name="Grass1" type="MeshInstance" parent="LOD1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Grass2" type="MeshInstance" parent="LOD1"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Grass3" type="MeshInstance" parent="LOD1"]
+transform = Transform( -0.766045, 0, 0.642787, 0, 1, 0, -0.642787, 0, -0.766045, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="LOD2" type="Spatial" parent="."]
+transform = Transform( 0.843466, 0, 0.537182, 0, 1, 0, -0.537182, 0, 0.843466, -0.238675, 0.483459, 0.274818 )
+
+[node name="Grass1" type="MeshInstance" parent="LOD2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Grass2" type="MeshInstance" parent="LOD2"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Grass3" type="MeshInstance" parent="LOD2"]
+transform = Transform( -0.766045, 0, 0.642787, 0, 1, 0, -0.642787, 0, -0.766045, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="LOD3" type="Spatial" parent="."]
+transform = Transform( 0.843466, 0, 0.537182, 0, 1, 0, -0.537182, 0, 0.843466, -0.064752, 0.483459, 0.347158 )
+
+[node name="Grass1" type="MeshInstance" parent="LOD3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Grass2" type="MeshInstance" parent="LOD3"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Grass3" type="MeshInstance" parent="LOD3"]
+transform = Transform( -0.766045, 0, 0.642787, 0, 1, 0, -0.642787, 0, -0.766045, 0.130905, 0, 0 )
+material_override = SubResource( 1 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+material/0 = null

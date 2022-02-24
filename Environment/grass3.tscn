@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Environment/grass3.material" type="Material" id=1]
+
+[sub_resource type="QuadMesh" id=1]
+
+[node name="grass2" type="Spatial"]
+transform = Transform( 3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -0.242857, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.495552, 0.254382 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0.495552, 0.254382 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 0.7674, 0, 0.641168, 0, 0.999999, 0, -0.641168, 0, 0.7674, -0.206528, 0.495552, 0.254382 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( -0.641168, 0, 0.767399, 0, 0.999999, 0, -0.767399, 0, -0.641168, -0.206528, 0.495552, 0.254382 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( 0.767399, 0, 0.641168, 0, 0.999999, 0, -0.641168, 0, 0.767399, 0.193813, 0.495552, 0.254382 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="."]
+transform = Transform( -0.641168, 0, 0.767399, 0, 0.999999, 0, -0.767399, 0, -0.641168, 0.193813, 0.495552, 0.254382 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.495552, -0.0529909 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0.495552, -0.0529909 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="."]
+transform = Transform( 0.767399, 0, 0.641168, 0, 0.999999, 0, -0.641168, 0, 0.767399, -0.206528, 0.495552, -0.0529909 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="."]
+transform = Transform( -0.641168, 0, 0.767399, 0, 0.999999, 0, -0.767399, 0, -0.641168, -0.206528, 0.495552, -0.0529909 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="."]
+transform = Transform( 0.767399, 0, 0.641168, 0, 0.999999, 0, -0.641168, 0, 0.767399, 0.193813, 0.495552, -0.0529909 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance12" type="MeshInstance" parent="."]
+transform = Transform( -0.641168, 0, 0.767399, 0, 0.999999, 0, -0.767399, 0, -0.641168, 0.193813, 0.495552, -0.0529909 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )

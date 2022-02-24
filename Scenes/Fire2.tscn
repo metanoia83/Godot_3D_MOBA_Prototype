@@ -1,0 +1,178 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Environment/fire3.png" type="Texture" id=1]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 320, 0, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 384, 0, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 448, 0, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 0, 128, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 64, 128, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 128, 128, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 192, 128, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 256, 128, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 320, 128, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 384, 128, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 448, 128, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 0, 256, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 64, 256, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 128, 256, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 192, 256, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 256, 256, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 320, 256, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 384, 256, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 448, 256, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 0, 384, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 64, 384, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 128, 384, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 192, 384, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 256, 384, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 320, 384, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 384, 384, 64, 128 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 448, 384, 64, 128 )
+
+[sub_resource type="SpriteFrames" id=33]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": true,
+"name": "default",
+"speed": 25.0
+} ]
+
+[node name="MeshInstance" type="AnimatedSprite3D"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+billboard = 1
+frames = SubResource( 33 )
+frame = 3
+playing = true

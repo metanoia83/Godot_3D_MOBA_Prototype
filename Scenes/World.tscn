@@ -1,0 +1,425 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Scripts/Clock.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Minion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/map.tscn" type="PackedScene" id=5]
+[ext_resource path="res://textures/minimap.png" type="Texture" id=6]
+[ext_resource path="res://virgo.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://textures/Skill1disable.png" type="Texture" id=8]
+[ext_resource path="res://textures/Range2.png" type="Texture" id=9]
+[ext_resource path="res://Mesh/MapNav2.tres" type="NavigationMesh" id=10]
+[ext_resource path="res://textures/Cursor.png" type="Texture" id=11]
+[ext_resource path="res://Mesh/cursor.mesh" type="ArrayMesh" id=12]
+[ext_resource path="res://textures/Skill3.png" type="Texture" id=13]
+[ext_resource path="res://textures/Skill2press.png" type="Texture" id=14]
+[ext_resource path="res://textures/Skill2.png" type="Texture" id=15]
+[ext_resource path="res://textures/Skill2disable.png" type="Texture" id=16]
+[ext_resource path="res://textures/Skill3press.png" type="Texture" id=17]
+[ext_resource path="res://textures/Skill1.png" type="Texture" id=18]
+[ext_resource path="res://textures/Skill3disable.png" type="Texture" id=19]
+[ext_resource path="res://textures/Skill1press.png" type="Texture" id=20]
+[ext_resource path="res://Korean_Calligraphy.ttf" type="DynamicFontData" id=21]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.0313726, 0.411765, 0.709804, 1 )
+sky_horizon_color = Color( 0, 0.164706, 0.294118, 1 )
+ground_bottom_color = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+ground_horizon_color = Color( 0.164706, 0.164706, 0.164706, 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_energy = 0.8
+ambient_light_color = Color( 0.0980392, 0.192157, 0.54902, 1 )
+ambient_light_energy = 0.8
+fog_height_enabled = true
+fog_height_min = 1.0
+fog_height_max = 5.0
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_unshaded = true
+params_cull_mode = 2
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.5
+albedo_color = Color( 0.792157, 0.792157, 0.792157, 0.705882 )
+albedo_texture = ExtResource( 11 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "anim"
+length = 0.15
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.792157, 0.792157, 0.792157, 0.705882 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.8, 1 ), Vector3( 0.1, 0.1, 0.1 ) ]
+}
+
+[sub_resource type="QuadMesh" id=5]
+size = Vector2( 5.5, 5.5 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 80
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 80
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 80
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 30
+font_data = ExtResource( 21 )
+
+[sub_resource type="NavigationMesh" id=11]
+vertices = PoolVector3Array( -63.4894, 0.55601, 63.1106, -58.9894, 0.55601, 67.9106, -58.3894, 0.55601, 67.9106, 67.9106, 0.55601, -58.3894, 67.9106, 0.55601, -58.9894, 63.1107, 0.55601, -63.4894, -60.1894, 0.55601, 50.8106, -67.9894, 0.55601, 58.6106, -63.4894, 0.55601, 63.1106, 63.1107, 0.55601, -63.4894, 58.6106, 0.55601, -67.9894, 50.8106, 0.55601, -59.8894, 59.8107, 0.55601, -50.5894, 67.9106, 0.55601, -58.3894, -63.4894, 0.55601, 63.1106, -58.3894, 0.55601, 67.9106, -50.5894, 0.55601, 60.1106, -42.7894, 0.55601, 52.0106, -52.0894, 0.55601, 43.0106, -60.1894, 0.55601, 50.8106, -11.2894, 0.55601, 20.5106, -20.5894, 0.55601, 11.2106, -28.3894, 0.55601, 19.3106, -19.0894, 0.55601, 28.6106, 12.4106, 0.55601, -3.18937, 20.5107, 0.55601, -10.9894, 11.2106, 0.55601, -20.2894, 3.11065, 0.55601, -12.4894, -36.1894, 0.55601, 27.1106, -44.2894, 0.55601, 34.9106, -34.9894, 0.55601, 44.2106, -26.8894, 0.55601, 36.4106, 52.0107, 0.55601, -42.4894, 59.8107, 0.55601, -50.5894, 50.8106, 0.55601, -59.8894, 42.7106, 0.55601, -52.0894, 34.9107, 0.55601, -43.9894, 43.9107, 0.55601, -34.6894, -12.4894, 0.55601, 3.41063, -20.5894, 0.55601, 11.2106, -11.2894, 0.55601, 20.5106, -3.18935, 0.55601, 12.7106, 4.61065, 0.55601, 4.61063, 12.4106, 0.55601, -3.18937, 3.11065, 0.55601, -12.4894, -4.68935, 0.55601, -4.68937, -52.0894, 0.55601, 43.0106, -42.7894, 0.55601, 52.0106, -34.9894, 0.55601, 44.2106, -44.2894, 0.55601, 34.9106, 43.9107, 0.55601, -34.6894, 34.9107, 0.55601, -43.9894, 27.1106, 0.55601, -36.1894, 36.1106, 0.55601, -26.8894, 4.61065, 0.55601, 4.61063, -4.68935, 0.55601, -4.68937, -12.4894, 0.55601, 3.41063, -3.18935, 0.55601, 12.7106, 28.3106, 0.55601, -18.7894, 36.1106, 0.55601, -26.8894, 27.1106, 0.55601, -36.1894, 19.0107, 0.55601, -28.3894, 11.2106, 0.55601, -20.2894, 20.5107, 0.55601, -10.9894, -26.8894, 0.55601, 36.4106, -19.0894, 0.55601, 28.6106, -28.3894, 0.55601, 19.3106, -36.1894, 0.55601, 27.1106 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 9, 13, 10 ), PoolIntArray( 10, 13, 11 ), PoolIntArray( 11, 13, 12 ), PoolIntArray( 15, 14, 16 ), PoolIntArray( 16, 14, 19 ), PoolIntArray( 16, 19, 18 ), PoolIntArray( 16, 18, 17 ), PoolIntArray( 23, 22, 20 ), PoolIntArray( 20, 22, 21 ), PoolIntArray( 27, 26, 24 ), PoolIntArray( 24, 26, 25 ), PoolIntArray( 31, 30, 28 ), PoolIntArray( 28, 30, 29 ), PoolIntArray( 37, 36, 32 ), PoolIntArray( 32, 36, 35 ), PoolIntArray( 32, 35, 33 ), PoolIntArray( 33, 35, 34 ), PoolIntArray( 41, 40, 38 ), PoolIntArray( 38, 40, 39 ), PoolIntArray( 43, 42, 44 ), PoolIntArray( 44, 42, 45 ), PoolIntArray( 47, 46, 48 ), PoolIntArray( 48, 46, 49 ), PoolIntArray( 53, 52, 50 ), PoolIntArray( 50, 52, 51 ), PoolIntArray( 57, 56, 54 ), PoolIntArray( 54, 56, 55 ), PoolIntArray( 63, 62, 58 ), PoolIntArray( 58, 62, 61 ), PoolIntArray( 58, 61, 59 ), PoolIntArray( 59, 61, 60 ), PoolIntArray( 64, 67, 65 ), PoolIntArray( 65, 67, 66 ) ]
+
+[sub_resource type="PlaneMesh" id=12]
+size = Vector2( 180, 14 )
+
+[sub_resource type="SpatialMaterial" id=13]
+flags_transparent = true
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.6
+albedo_color = Color( 1, 1, 1, 0.784314 )
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="QuadMesh" id=14]
+size = Vector2( 165, 165 )
+
+[node name="World" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Marker" type="MeshInstance" parent="."]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 0.8, 0, -0.0871557, 0, 0.996195, -138.75, 2.14654, 0 )
+material_override = SubResource( 3 )
+mesh = ExtResource( 12 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Marker"]
+anims/anim = SubResource( 4 )
+
+[node name="SelectMarker" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -99.2438, -0.0159912, 0 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.738326, 0.674444, 0, -0.674444, -0.738326, -26.8645, 21.3232, 52.4067 )
+light_color = Color( 0.964706, 0.819608, 0.145098, 1 )
+light_energy = 0.5
+shadow_bias = 0.08
+directional_shadow_blend_splits = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.819152, 0.573577, 0, -0.573577, 0.819152, -40, 60, 140 )
+keep_aspect = 0
+cull_mask = 1
+current = true
+fov = 30.0
+near = 0.1
+far = 1000.0
+script = ExtResource( 3 )
+distance = 50.0
+height = 70.0
+
+[node name="Mtimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -206.0
+margin_top = -196.0
+margin_right = 208.0
+margin_bottom = -68.0
+rect_min_size = Vector2( 200, 64 )
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skill1" type="TextureButton" parent="UI/Control/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 64, 64 )
+toggle_mode = true
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 20 )
+texture_disabled = ExtResource( 8 )
+
+[node name="Skill1Progress" type="TextureProgress" parent="UI/Control/VBoxContainer/Skill1"]
+modulate = Color( 0, 0, 0, 0.705882 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+max_value = 6.0
+step = 0.1
+texture_progress = ExtResource( 18 )
+fill_mode = 5
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/Control/VBoxContainer/Skill1"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 7 )
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skill2" type="TextureButton" parent="UI/Control/VBoxContainer"]
+margin_left = 143.0
+margin_right = 271.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 14 )
+texture_disabled = ExtResource( 16 )
+
+[node name="Skill2Progress" type="TextureProgress" parent="UI/Control/VBoxContainer/Skill2"]
+modulate = Color( 0, 0, 0, 0.705882 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+max_value = 6.0
+step = 0.1
+texture_progress = ExtResource( 15 )
+fill_mode = 5
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/Control/VBoxContainer/Skill2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 64, 64 )
+custom_fonts/font = SubResource( 8 )
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Skill3" type="TextureButton" parent="UI/Control/VBoxContainer"]
+margin_left = 286.0
+margin_right = 414.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 17 )
+texture_disabled = ExtResource( 19 )
+
+[node name="Skill3Progress" type="TextureProgress" parent="UI/Control/VBoxContainer/Skill3"]
+modulate = Color( 0, 0, 0, 0.705882 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+max_value = 11.0
+step = 0.1
+texture_progress = ExtResource( 13 )
+fill_mode = 5
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/Control/VBoxContainer/Skill3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 64, 64 )
+custom_fonts/font = SubResource( 9 )
+text = "10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clock" type="RichTextLabel" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -58.0
+margin_top = 16.0
+margin_right = 62.0
+margin_bottom = 56.0
+custom_fonts/normal_font = SubResource( 10 )
+fit_content_height = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ms" type="Timer" parent="UI/Clock"]
+wait_time = 0.1
+autostart = true
+
+[node name="BlueSpawn" type="Node" parent="."]
+
+[node name="BlueTop" type="Position3D" parent="BlueSpawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65.804, 0.488525, 57.3985 )
+
+[node name="BlueMid" type="Position3D" parent="BlueSpawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3825, 0.488525, 57.9584 )
+
+[node name="BlueBot" type="Position3D" parent="BlueSpawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3825, 0.488525, 64.6871 )
+
+[node name="RedSpawn" type="Node" parent="."]
+
+[node name="RedTop" type="Position3D" parent="RedSpawn"]
+transform = Transform( -0.998986, 0, 0.0450315, 0, 1, 0, -0.0450315, 0, -0.998986, 64.9352, 0.488525, -56.8837 )
+
+[node name="RedMid" type="Position3D" parent="RedSpawn"]
+transform = Transform( -0.998986, 0, 0.0450315, 0, 1, 0, -0.0450315, 0, -0.998986, 56.5475, 0.488525, -57.8223 )
+
+[node name="RedBot" type="Position3D" parent="RedSpawn"]
+transform = Transform( -0.998986, 0, 0.0450315, 0, 1, 0, -0.0450315, 0, -0.998986, 56.8506, 0.488525, -64.5442 )
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.15601, 0 )
+visible = false
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="Minion3" parent="Navigation" instance=ExtResource( 4 )]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -48.8262, 1.03689, 53.1579 )
+
+[node name="Minion" parent="Navigation" instance=ExtResource( 4 )]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -52.1349, 1.03689, 56.3897 )
+
+[node name="Minion2" parent="Navigation" instance=ExtResource( 4 )]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -55.7085, 1.03689, 59.2942 )
+
+[node name="PlayerNav" type="Navigation" parent="."]
+
+[node name="PayerNavMap" type="NavigationMeshInstance" parent="PlayerNav"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3175, 0 )
+navmesh = ExtResource( 10 )
+
+[node name="Player" parent="PlayerNav" instance=ExtResource( 2 )]
+transform = Transform( 0.513332, 0, -0.85819, 0, 1, 0, 0.85819, 0, 0.513332, -79.2703, 0.936094, 77.1756 )
+
+[node name="MiniMap" type="ViewportContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 380.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 380, 380 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MiniMapMesh" type="MeshInstance" parent="MiniMap"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, -38, 0 )
+layers = 2
+material_override = SubResource( 13 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="Viewport" type="Viewport" parent="MiniMap"]
+size = Vector2( 380, 380 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="MiniMap/Viewport"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 350, 0 )
+cull_mask = 2
+projection = 1
+size = 170.0
+far = 600.0
+
+[node name="Spawn" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -80.1721, 1.18932, 78.5029 )
+
+[node name="MOBAmap" parent="." instance=ExtResource( 5 )]
+
+[node name="SpawnLookAt" type="Position3D" parent="."]
+
+[connection signal="pressed" from="UI/Control/VBoxContainer/Skill1" to="PlayerNav/Player" method="_on_Skill1_pressed"]
+[connection signal="pressed" from="UI/Control/VBoxContainer/Skill2" to="PlayerNav/Player" method="_on_Skill2_pressed"]
+[connection signal="pressed" from="UI/Control/VBoxContainer/Skill3" to="PlayerNav/Player" method="_on_Skill3_pressed"]
+[connection signal="timeout" from="UI/Clock/ms" to="UI/Clock" method="_on_ms_timeout"]

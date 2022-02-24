@@ -1,0 +1,154 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Environment/New folder/Smoke30Frames2.png" type="Texture" id=1]
+[ext_resource path="res://Environment/New folder/Fire.tres" type="Gradient" id=7]
+[ext_resource path="res://Environment/New folder/SmokeGradient.tres" type="Gradient" id=8]
+[ext_resource path="res://Environment/New folder/Spark.png" type="Texture" id=9]
+[ext_resource path="res://Environment/New folder/SparksGradient.tres" type="Gradient" id=10]
+
+[sub_resource type="SpatialMaterial" id=1]
+render_priority = 1
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = true
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.165909 ), 0.0, 3.66364, 0, 0, Vector2( 0.129032, 1 ), 0.873309, 0.873309, 0, 0, Vector2( 1, 0.147727 ), -1.04312, 0.0, 0, 0 ]
+
+[sub_resource type="SpatialMaterial" id=4]
+render_priority = 1
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+params_billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = true
+albedo_color = Color( 1, 1, 1, 0.533333 )
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=5]
+material = SubResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=6]
+render_priority = 1
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = true
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="QuadMesh" id=7]
+material = SubResource( 6 )
+size = Vector2( 0.05, 0.05 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0.109091 ), 0.0, 3.66364, 0, 0, Vector2( 0.275434, 1 ), 0.873309, 0.873309, 0, 0, Vector2( 1, 0.0454545 ), -1.04312, 0.0, 0, 0 ]
+
+[node name="Fire" type="Spatial"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="Fire" type="CPUParticles" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+amount = 20
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+local_coords = false
+draw_order = 2
+mesh = SubResource( 2 )
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.5
+initial_velocity_random = 0.1
+angular_velocity = 40.0
+angular_velocity_random = 0.4
+linear_accel = 3.0
+linear_accel_random = 1.0
+angle = 360.0
+angle_random = 0.4
+scale_amount_curve = SubResource( 3 )
+color_ramp = ExtResource( 7 )
+anim_speed = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[node name="Smoke" type="CPUParticles" parent="Fire"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503006, 0 )
+amount = 20
+randomness = 1.0
+fixed_fps = 60
+local_coords = false
+draw_order = 2
+mesh = SubResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.5
+initial_velocity_random = 0.1
+angular_velocity = 40.0
+angular_velocity_random = 0.4
+linear_accel = 3.0
+linear_accel_random = 1.0
+angle = 360.0
+angle_random = 0.4
+scale_amount_curve = SubResource( 3 )
+color_ramp = ExtResource( 8 )
+anim_speed = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[node name="Spark" type="CPUParticles" parent="Fire"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744184, 0 )
+amount = 20
+lifetime = 0.5
+randomness = 1.0
+fixed_fps = 60
+local_coords = false
+draw_order = 2
+mesh = SubResource( 7 )
+emission_shape = 1
+emission_sphere_radius = 0.4
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.5
+initial_velocity_random = 0.1
+angular_velocity = 40.0
+angular_velocity_random = 0.4
+linear_accel = 3.0
+linear_accel_random = 1.0
+radial_accel = 2.0
+radial_accel_random = 0.5
+tangential_accel = 4.0
+tangential_accel_random = 0.3
+damping = 6.0
+damping_random = 0.5
+angle = 360.0
+angle_random = 0.4
+scale_amount = 0.2
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 8 )
+color_ramp = ExtResource( 10 )
+anim_speed = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0

@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Mesh/towercrystal.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://Mesh/tower.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://textures/towerbody.png" type="Texture" id=3]
+[ext_resource path="res://textures/Crystal_red.jpg" type="Texture" id=4]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_unshaded = true
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Rotate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Crystal:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Crystal:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ) ]
+}
+
+[node name="MainTowerB" type="Spatial"]
+
+[node name="Base" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = SubResource( 4 )
+
+[node name="Crystal" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 5 )
+
+[node name="CrystalRotate" type="AnimationPlayer" parent="."]
+autoplay = "Rotate"
+playback_speed = 0.08
+anims/Rotate = SubResource( 6 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 4.09421, 0 )
+light_color = Color( 1, 0.184314, 0.101961, 1 )
+light_energy = 2.0
+spot_range = 7.29614
+spot_angle = 37.5831

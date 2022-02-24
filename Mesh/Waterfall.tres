@@ -1,0 +1,79 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=2]
+
+[ext_resource path="res://textures/waterfall_tex.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+render_mode blend_mix, specular_phong, cull_disabled;
+
+uniform vec4 light_color : hint_color;
+uniform vec4 dark_color : hint_color;
+
+uniform sampler2D water_tex;
+uniform sampler2D noise_tex;
+uniform sampler2D normal_tex;
+
+uniform float displ_amount = 0.02;
+uniform float speed = 1.0;
+
+uniform vec2 strength = vec2(0.25, 0.5);
+uniform vec2 frequency = vec2(3.0, 2.5);
+uniform vec2 time_factor = vec2(5.0,4.0);
+
+float height(vec2 pos, float time){
+	return (strength.y * sin(pos.y * frequency.y + time * time_factor.y)) + (strength.x * sin(pos.x * frequency.x + time * time_factor.x)); 
+}
+
+void vertex(){
+	VERTEX.y += height(VERTEX.yz, TIME);
+}
+
+void fragment(){
+	
+	vec2 displ = texture(water_tex, UV - TIME * speed / 8f).xy;
+	displ = (displ * 2f - 1f) * displ_amount;
+	
+	float noise = texture(noise_tex, vec2(UV.x, UV.y / 4f - TIME * speed / 4f) + displ).x;
+	noise = floor(noise * 4f) / 4f;
+	
+	vec4 col = mix(dark_color, light_color, noise);
+	
+	vec2 uv_movement = UV;
+	uv_movement -= vec2(0.0, 1.0) * TIME * speed;
+	
+	ALBEDO = col.rgb;
+	NORMALMAP = texture(normal_tex, uv_movement).rgb;
+	ROUGHNESS = 0.11;
+	ALPHA = texture(water_tex, uv_movement).a * 0.75;
+}"
+
+[sub_resource type="OpenSimplexNoise" id=2]
+period = 16.0
+persistence = 0.399
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=3]
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+seamless = true
+as_normalmap = true
+bump_strength = 10.0
+noise = SubResource( 4 )
+
+[resource]
+shader = SubResource( 1 )
+shader_param/light_color = Color( 0.670588, 0.737255, 0.756863, 0.294118 )
+shader_param/dark_color = Color( 0.14902, 0.176471, 0.192157, 0.380392 )
+shader_param/displ_amount = 1.0
+shader_param/speed = -0.08
+shader_param/strength = Vector2( 0.1, 0.08 )
+shader_param/frequency = Vector2( 8, 2 )
+shader_param/time_factor = Vector2( 2, 3 )
+shader_param/water_tex = ExtResource( 2 )
+shader_param/noise_tex = SubResource( 3 )
+shader_param/normal_tex = SubResource( 5 )

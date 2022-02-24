@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Minion.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -57.4707, 0, 58.0245, -7.12692, -1.52588e-05, 6.61172, 7.12692, 1.52588e-05, -6.61172, -38.9173, -5.72205e-06, 44.2352, -12.9376, 0, 12.8608, 12.9376, 0, -12.8608, -18.9767, -5.72205e-06, 24.5018, -10.6683, -2.23499, 14.7033, 10.6683, 2.23499, -14.7033, 4.26709, 1.22786e-05, -1.34633, -11.176, 0, 11.6363, 11.176, 0, -11.6363, 33.9904, -1.8239e-05, -35.4075, -8.03719, 1.22786e-05, 10.0861, 8.03719, -1.22786e-05, -10.0861, 57.4787, 0, -57.4472 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Path" type="Path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24187, 0 )
+curve = SubResource( 1 )
+
+[node name="PathFollow" type="PathFollow" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57.4707, 0, 58.0245 )
+rotation_mode = 1
+loop = false
+
+[node name="Minion" parent="PathFollow" instance=ExtResource( 1 )]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0 )
