@@ -7,7 +7,7 @@
 <p align="center">A rough implementation of a 3D MOBA game made with Godot 3.4.2 using GLES2</p>
 
 <p align="center">
-<a href="https://github.com/ReinanHS/laravel-manager-base/wiki">Documentation</a> |
+<a href="https://github.com/metanoia83/Godot_3D_MOBA_Prototype/wiki">Documentation</a> |
 <a href="#installation">Installation</a> |
 <a href="#requirements">Requirements</a> |
 <a href="#changelog">Change log</a> |
